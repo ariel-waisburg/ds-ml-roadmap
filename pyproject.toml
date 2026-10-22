@@ -1,0 +1,53 @@
+[project]
+name = "ds-ml-roadmap"
+version = "0.1.0"
+description = "Cuaderno de trabajo del roadmap Data Science / ML"
+readme = "README.md"
+authors = [{ name = "Ariel Waisburg" }]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "statsmodels",
+    "scikit-learn",
+    "xgboost",
+    "lightgbm",
+    "matplotlib",
+    "seaborn",
+    "jupyterlab",
+    "ipykernel",
+    "duckdb",
+    "sqlalchemy",
+    "psycopg[binary]",
+    "python-dotenv",
+    "nltk",
+]
+
+[dependency-groups]
+dev = [
+    "ruff",
+    "pytest",
+    "pre-commit",
+    "nbstripout",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/roadmap_utils"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"*.ipynb" = ["E402"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
